@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Project-specific ignores
+Reference_Code/*
+Tutorials_scripts/*
+Instructions/*
