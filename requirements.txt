@@ -1,1 +1,6 @@
 pyyaml
+pymongo 
+pymongo[srv]
+pandas 
+scikit-learn 
+python-dotenv
