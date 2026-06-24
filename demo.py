@@ -28,23 +28,32 @@
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
 
-# ----------------------------------------  ----------------------------------------
 
-from shipment.entity.config_entity import DataIngestionConfig
+from shipment.pipline.training_pipeline import TrainPipeline
 
 if __name__ == "__main__":
-    print("Testing Data Ingestion Configuration Entity...")
+    print("Starting Training Pipeline run...")
+    pipeline = TrainPipeline()
+    pipeline.run_pipeline()
+    print("\nTraining pipeline run completed successfully!")
 
-    # Config অবজেক্ট তৈরি করা
-    config = DataIngestionConfig()
+# ----------------------------------------  ----------------------------------------
 
-    print("\n[SUCCESS] Config object successfully initialized!")
-    print(f"Database Name: {config.DB_NAME}")
-    print(f"Collection Name: {config.COLLECTION_NAME}")
-    print(f"Columns to drop: {config.DROP_COLS}")
-    print(f"Ingestion Artifact Dir: {config.DATA_INGESTION_ARTIFCATS_DIR}")
-    print(f"Train File Path: {config.TRAIN_DATA_FILE_PATH}")
-    print(f"Test File Path: {config.TEST_DATA_FILE_PATH}")
+# from shipment.entity.config_entity import DataIngestionConfig
+
+# if __name__ == "__main__":
+#     print("Testing Data Ingestion Configuration Entity...")
+
+#     # Config অবজেক্ট তৈরি করা
+#     config = DataIngestionConfig()
+
+#     print("\n[SUCCESS] Config object successfully initialized!")
+#     print(f"Database Name: {config.DB_NAME}")
+#     print(f"Collection Name: {config.COLLECTION_NAME}")
+#     print(f"Columns to drop: {config.DROP_COLS}")
+#     print(f"Ingestion Artifact Dir: {config.DATA_INGESTION_ARTIFCATS_DIR}")
+#     print(f"Train File Path: {config.TRAIN_DATA_FILE_PATH}")
+#     print(f"Test File Path: {config.TEST_DATA_FILE_PATH}")
 
 # ----------------------------------------  ----------------------------------------
 
