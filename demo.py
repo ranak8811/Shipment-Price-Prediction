@@ -26,16 +26,57 @@
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
+
+
+# import os
+# from shipment.utils.main_utils import MainUtils
+
+# if __name__ == "__main__":
+#     print("Testing write_json_to_yaml_file utility method...")
+
+#     # স্যাম্পল ডিকশনারি বা JSON ডাটা
+#     dummy_report = {
+#         "validation_status": True,
+#         "drift_detected": False,
+#         "metrics": {
+#             "n_features": 15,
+#             "n_drifted_features": 0
+#         }
+#     }
+
+#     test_file_path = "config/test_report.yaml"
+
+#     # Utilities অবজেক্ট তৈরি
+#     utils = MainUtils()
+
+#     try:
+#         # YAML ফাইলে রাইট করা
+#         utils.write_json_to_yaml_file(
+#             json_file=dummy_report, yaml_file_path=test_file_path)
+#         print(
+#             f"\n[SUCCESS] Successfully written dummy report to {test_file_path}!")
+
+#         # পুনরায় রিড করে চেক করা
+#         read_data = utils.read_yaml_file(test_file_path)
+#         print("Read Data from generated YAML:")
+#         print(read_data)
+
+#         # টেস্ট ফাইলটি মুছে ফেলা
+#         if os.path.exists(test_file_path):
+#             os.remove(test_file_path)
+
+#     except Exception as e:
+#         print(f"[ERROR] Test failed: {e}")
+
 # ----------------------------------------  ----------------------------------------
 
+# from shipment.pipline.training_pipeline import TrainPipeline
 
-from shipment.pipline.training_pipeline import TrainPipeline
-
-if __name__ == "__main__":
-    print("Starting Training Pipeline run...")
-    pipeline = TrainPipeline()
-    pipeline.run_pipeline()
-    print("\nTraining pipeline run completed successfully!")
+# if __name__ == "__main__":
+#     print("Starting Training Pipeline run...")
+#     pipeline = TrainPipeline()
+#     pipeline.run_pipeline()
+#     print("\nTraining pipeline run completed successfully!")
 
 # ----------------------------------------  ----------------------------------------
 

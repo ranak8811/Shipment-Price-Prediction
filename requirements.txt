@@ -4,3 +4,4 @@ pymongo[srv]
 pandas 
 scikit-learn 
 python-dotenv
+evidently==0.2.8
