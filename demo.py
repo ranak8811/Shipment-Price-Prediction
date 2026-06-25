@@ -21,37 +21,55 @@
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
-# ----------------------------------------  ----------------------------------------
 
-import os
-import glob
-from shipment.utils.main_utils import MainUtils
+from shipment.entity.config_entity import ModelTrainerConfig
 
 if __name__ == "__main__":
-    print("Testing load_object utility method...")
+    print("Testing Model Trainer Configuration Entity...")
 
-    # সর্বশেষ artifacts ফোল্ডারে জেনারেট হওয়া shipping_preprocessor.pkl ফাইলটি খুঁজে বের করা
-    preprocessor_files = glob.glob(
-        "artifacts/*/DataTransformationArtifacts/shipping_preprocessor.pkl")
+    # Config অবজেক্ট তৈরি করা
+    config = ModelTrainerConfig()
 
-    if not preprocessor_files:
-        print("[ERROR] No preprocessor file found! Please run demo.py of Part 6b first.")
-        os._exit(1)
+    print("\n[SUCCESS] ModelTrainerConfig initialized successfully!")
+    print(
+        f"Data Transformation Artifact Dir: {config.DATA_TRANSFORMATION_ARTIFACT_DIR if hasattr(config, 'DATA_TRANSFORMATION_ARTIFACT_DIR') else config.DATA_TRANSFORMATION_ARTIFACTS_DIR}")
+    print(f"Model Trainer Artifact Dir: {config.MODEL_TRAINER_ARTIFACTS_DIR}")
+    print(
+        f"Preprocessor Object File Path: {config.PREPROCESSOR_OBJECT_FILE_PATH}")
+    print(f"Trained Model Save File Path: {config.TRAINED_MODEL_FILE_PATH}")
 
-    target_pkl_path = preprocessor_files[-1]
-    print(f"Found preprocessor object at: {target_pkl_path}")
 
-    # Utilities অবজেক্ট তৈরি
-    utils = MainUtils()
+# ----------------------------------------  ----------------------------------------
 
-    try:
-        # pkl অবজেক্ট লোড করা
-        preprocessor_obj = utils.load_object(target_pkl_path)
-        print(f"\n[SUCCESS] Successfully loaded preprocessor object!")
-        print(f"Object Type: {type(preprocessor_obj)}")
+# import os
+# import glob
+# from shipment.utils.main_utils import MainUtils
 
-    except Exception as e:
-        print(f"[ERROR] Test failed: {e}")
+# if __name__ == "__main__":
+#     print("Testing load_object utility method...")
+
+#     # সর্বশেষ artifacts ফোল্ডারে জেনারেট হওয়া shipping_preprocessor.pkl ফাইলটি খুঁজে বের করা
+#     preprocessor_files = glob.glob(
+#         "artifacts/*/DataTransformationArtifacts/shipping_preprocessor.pkl")
+
+#     if not preprocessor_files:
+#         print("[ERROR] No preprocessor file found! Please run demo.py of Part 6b first.")
+#         os._exit(1)
+
+#     target_pkl_path = preprocessor_files[-1]
+#     print(f"Found preprocessor object at: {target_pkl_path}")
+
+#     # Utilities অবজেক্ট তৈরি
+#     utils = MainUtils()
+
+#     try:
+#         # pkl অবজেক্ট লোড করা
+#         preprocessor_obj = utils.load_object(target_pkl_path)
+#         print(f"\n[SUCCESS] Successfully loaded preprocessor object!")
+#         print(f"Object Type: {type(preprocessor_obj)}")
+
+#     except Exception as e:
+#         print(f"[ERROR] Test failed: {e}")
 
 # ----------------------------------------  ----------------------------------------
 
