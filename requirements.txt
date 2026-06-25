@@ -3,6 +3,7 @@ pymongo
 pymongo[srv]
 pandas<2.0
 numpy<2.0
+dill
 scikit-learn 
 python-dotenv
 evidently==0.2.8

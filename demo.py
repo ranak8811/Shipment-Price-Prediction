@@ -24,15 +24,54 @@
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
-# ----------------------------------------  ----------------------------------------
 
-from shipment.pipline.training_pipeline import TrainPipeline
+import os
+import numpy as np
+from shipment.utils.main_utils import MainUtils
 
 if __name__ == "__main__":
-    print("Starting Training Pipeline (Ingestion + Validation)...")
-    pipeline = TrainPipeline()
-    pipeline.run_pipeline()
-    print("\nPipeline run completed successfully!")
+    print("Testing save_numpy_array_data and save_object utility methods...")
+
+    # স্যাম্পল ডেটা তৈরি
+    dummy_array = np.array([[1, 2, 3], [4, 5, 6]])
+    dummy_object = {"model_name": "RandomForest",
+                    "hyperparameters": {"n_estimators": 100}}
+
+    array_file_path = "config/test_array.npy"
+    object_file_path = "config/test_object.pkl"
+
+    # Utilities অবজেক্ট তৈরি
+    utils = MainUtils()
+
+    try:
+        # ১. NumPy অ্যারে সেভ ও টেস্ট
+        utils.save_numpy_array_data(
+            file_path=array_file_path, array=dummy_array)
+        print(
+            f"[SUCCESS] Successfully saved dummy numpy array to {array_file_path}!")
+
+        # ২. অবজেক্ট সেভ ও টেস্ট (dill ব্যবহার করে)
+        utils.save_object(file_path=object_file_path, obj=dummy_object)
+        print(
+            f"[SUCCESS] Successfully saved dummy object to {object_file_path}!")
+
+        # তৈরি হওয়া টেস্ট ফাইলগুলো ডিলিট করে ফেলা (পরিস্কার রাখতে)
+        if os.path.exists(array_file_path):
+            os.remove(array_file_path)
+        if os.path.exists(object_file_path):
+            os.remove(object_file_path)
+
+    except Exception as e:
+        print(f"[ERROR] Test failed: {e}")
+# ----------------------------------------  ----------------------------------------
+
+# from shipment.pipline.training_pipeline import TrainPipeline
+
+# if __name__ == "__main__":
+#     print("Starting Training Pipeline (Ingestion + Validation)...")
+#     pipeline = TrainPipeline()
+#     pipeline.run_pipeline()
+#     print("\nPipeline run completed successfully!")
 
 # ----------------------------------------  ----------------------------------------
 
