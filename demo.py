@@ -22,15 +22,46 @@
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
-# ----------------------------------------  ----------------------------------------
 
-from shipment.pipline.training_pipeline import TrainPipeline
+import os
+import glob
+from shipment.utils.main_utils import MainUtils
 
 if __name__ == "__main__":
-    print("Starting Training Pipeline (Ingestion + Validation + Transformation)...")
-    pipeline = TrainPipeline()
-    pipeline.run_pipeline()
-    print("\nPipeline run completed successfully!")
+    print("Testing load_object utility method...")
+
+    # সর্বশেষ artifacts ফোল্ডারে জেনারেট হওয়া shipping_preprocessor.pkl ফাইলটি খুঁজে বের করা
+    preprocessor_files = glob.glob(
+        "artifacts/*/DataTransformationArtifacts/shipping_preprocessor.pkl")
+
+    if not preprocessor_files:
+        print("[ERROR] No preprocessor file found! Please run demo.py of Part 6b first.")
+        os._exit(1)
+
+    target_pkl_path = preprocessor_files[-1]
+    print(f"Found preprocessor object at: {target_pkl_path}")
+
+    # Utilities অবজেক্ট তৈরি
+    utils = MainUtils()
+
+    try:
+        # pkl অবজেক্ট লোড করা
+        preprocessor_obj = utils.load_object(target_pkl_path)
+        print(f"\n[SUCCESS] Successfully loaded preprocessor object!")
+        print(f"Object Type: {type(preprocessor_obj)}")
+
+    except Exception as e:
+        print(f"[ERROR] Test failed: {e}")
+
+# ----------------------------------------  ----------------------------------------
+
+# from shipment.pipline.training_pipeline import TrainPipeline
+
+# if __name__ == "__main__":
+#     print("Starting Training Pipeline (Ingestion + Validation + Transformation)...")
+#     pipeline = TrainPipeline()
+#     pipeline.run_pipeline()
+#     print("\nPipeline run completed successfully!")
 
 
 # ----------------------------------------  ----------------------------------------

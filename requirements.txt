@@ -7,3 +7,5 @@ dill
 scikit-learn 
 python-dotenv
 evidently==0.2.8
+xgboost 
+catboost
