@@ -1,7 +1,8 @@
 pyyaml
 pymongo 
 pymongo[srv]
-pandas 
+pandas<2.0
+numpy<2.0
 scikit-learn 
 python-dotenv
 evidently==0.2.8

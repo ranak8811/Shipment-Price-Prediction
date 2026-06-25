@@ -6,7 +6,8 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "evidently==0.2.8",
-    "pandas>=3.0.3",
+    "numpy<2.0",
+    "pandas<2.0",
     "pymongo[srv]>=4.17.0",
     "python-dotenv>=1.2.2",
     "pyyaml>=6.0.3",
