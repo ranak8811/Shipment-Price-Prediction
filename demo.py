@@ -20,23 +20,32 @@
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
-# ----------------------------------------  ----------------------------------------
 
-from shipment.entity.config_entity import ModelTrainerConfig
+from shipment.pipline.training_pipeline import TrainPipeline
 
 if __name__ == "__main__":
-    print("Testing Model Trainer Configuration Entity...")
+    print("Starting Complete Training Pipeline Run (Ingestion -> Validation -> Transformation -> Trainer)...")
+    pipeline = TrainPipeline()
+    pipeline.run_pipeline()
+    print("\nPipeline run completed successfully!")
 
-    # Config অবজেক্ট তৈরি করা
-    config = ModelTrainerConfig()
+# ----------------------------------------  ----------------------------------------
 
-    print("\n[SUCCESS] ModelTrainerConfig initialized successfully!")
-    print(
-        f"Data Transformation Artifact Dir: {config.DATA_TRANSFORMATION_ARTIFACT_DIR if hasattr(config, 'DATA_TRANSFORMATION_ARTIFACT_DIR') else config.DATA_TRANSFORMATION_ARTIFACTS_DIR}")
-    print(f"Model Trainer Artifact Dir: {config.MODEL_TRAINER_ARTIFACTS_DIR}")
-    print(
-        f"Preprocessor Object File Path: {config.PREPROCESSOR_OBJECT_FILE_PATH}")
-    print(f"Trained Model Save File Path: {config.TRAINED_MODEL_FILE_PATH}")
+# from shipment.entity.config_entity import ModelTrainerConfig
+
+# if __name__ == "__main__":
+#     print("Testing Model Trainer Configuration Entity...")
+
+#     # Config অবজেক্ট তৈরি করা
+#     config = ModelTrainerConfig()
+
+#     print("\n[SUCCESS] ModelTrainerConfig initialized successfully!")
+#     print(
+#         f"Data Transformation Artifact Dir: {config.DATA_TRANSFORMATION_ARTIFACT_DIR if hasattr(config, 'DATA_TRANSFORMATION_ARTIFACT_DIR') else config.DATA_TRANSFORMATION_ARTIFACTS_DIR}")
+#     print(f"Model Trainer Artifact Dir: {config.MODEL_TRAINER_ARTIFACTS_DIR}")
+#     print(
+#         f"Preprocessor Object File Path: {config.PREPROCESSOR_OBJECT_FILE_PATH}")
+#     print(f"Trained Model Save File Path: {config.TRAINED_MODEL_FILE_PATH}")
 
 
 # ----------------------------------------  ----------------------------------------
