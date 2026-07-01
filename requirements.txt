@@ -10,3 +10,7 @@ python-dotenv
 evidently==0.2.8
 xgboost 
 catboost
+fastapi
+uvicorn
+Jinja2
+python-multipart
