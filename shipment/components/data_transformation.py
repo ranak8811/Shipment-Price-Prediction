@@ -150,14 +150,14 @@ class DataTransformation:
             input_feature_train_df = self.train_set.drop(
                 columns=[target_column_name], axis=1
             )
-            target_feature_train_df = self.train_set[target_column_name]
-            logging.info("Got train features and test feature")
+            target_feature_train_df = np.log1p(np.abs(self.train_set[target_column_name]))
+            logging.info("Got train features and target feature (transformed using log1p(abs(y)))")
 
             input_feature_test_df = self.test_set.drop(
                 columns=[target_column_name], axis=1
             )
-            target_feature_test_df = self.test_set[target_column_name]
-            logging.info("Got train features and test feature")
+            target_feature_test_df = np.log1p(np.abs(self.test_set[target_column_name]))
+            logging.info("Got test features and target feature (transformed using log1p(abs(y)))")
 
             input_feature_train_arr = preprocessor.fit_transform(
                 input_feature_train_df)

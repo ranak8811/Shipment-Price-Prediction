@@ -4,7 +4,8 @@ pymongo[srv]
 pandas<2.0
 numpy<2.0
 dill
-scikit-learn 
+scikit-learn
+seaborn
 python-dotenv
 evidently==0.2.8
 xgboost 

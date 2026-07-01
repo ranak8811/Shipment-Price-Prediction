@@ -2,6 +2,7 @@ import os
 from shipment.logger import logging
 import sys
 import pandas as pd
+import numpy as np
 from typing import List, Tuple
 from pandas import DataFrame
 from shipment.constants import MODEL_CONFIG_FILE
@@ -23,7 +24,9 @@ class CostModel:
         try:
             transformed_feature = self.preprocessing_object.transform(X)
             logging.info("Used the trained model to get predictions")
-            return self.trained_model_object.predict(transformed_feature)
+            log_predictions = self.trained_model_object.predict(transformed_feature)
+            # Revert log transform to get prediction in original scale
+            return np.expm1(log_predictions)
 
         except Exception as e:
             raise shippingException(e, sys) from e
