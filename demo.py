@@ -15,19 +15,61 @@
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
-# ----------------------------------------  ----------------------------------------
 
-
-from shipment.pipline.training_pipeline import TrainPipeline
+from shipment.pipline.prediction_pipeline import PredictionPipeline, ShipmentData
 
 if __name__ == "__main__":
     try:
-        print("Starting Training Pipeline (Ingestion + Validation + Transformation + Training + Evaluation + Pusher)...")
-        pipeline = TrainPipeline()
-        pipeline.run_pipeline()
-        print("Training pipeline executed and model pushed successfully!")
+        print("Testing Prediction Pipeline with custom input data...")
+
+        # ১. ব্যবহারকারীর ইনপুট ডাটা তৈরি (Dummy Input matching dataset values)
+        dummy_input = ShipmentData(
+            artist_reputation=0.25,
+            height=17.0,
+            width=6.0,
+            weight=4128.0,
+            material="Brass",
+            price_of_sculpture=13.91,
+            base_shipping_price=16.27,
+            international="Yes",
+            express_shipment="Yes",
+            installation_included="No",
+            transport="Airways",
+            fragile="No",
+            customer_information="Working Class",
+            remote_location="No"
+        )
+
+        # ২. ডেটাফ্রেম তৈরি
+        input_df = dummy_input.get_data_as_dataframe()
+        print("\nInput DataFrame:")
+        print(input_df)
+
+        # ৩. প্রেডিকশন রান করা
+        pipeline = PredictionPipeline()
+        predictions = pipeline.predict(input_df)
+
+        print("\nPrediction Results:")
+        print(f"Predicted Shipping Cost: ${predictions[0]:.2f}")
+        print("Prediction Pipeline tested successfully!")
+
     except Exception as e:
-        print(f"Pipeline execution failed: {e}")
+        print(f"Prediction Pipeline test failed: {e}")
+
+
+# ----------------------------------------  ----------------------------------------
+
+
+# from shipment.pipline.training_pipeline import TrainPipeline
+
+# if __name__ == "__main__":
+#     try:
+#         print("Starting Training Pipeline (Ingestion + Validation + Transformation + Training + Evaluation + Pusher)...")
+#         pipeline = TrainPipeline()
+#         pipeline.run_pipeline()
+#         print("Training pipeline executed and model pushed successfully!")
+#     except Exception as e:
+#         print(f"Pipeline execution failed: {e}")
 
 
 # ----------------------------------------  ----------------------------------------
