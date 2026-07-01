@@ -96,8 +96,8 @@ class ModelEvaluation:
             }
 
             self.utils.write_json_to_yaml_file(
-                json_content=evaluation_report,
-                file_path=self.model_eval_config.REPORT_FILE_PATH
+                json_file=evaluation_report,
+                yaml_file_path=self.model_eval_config.REPORT_FILE_PATH
             )
             logging.info(
                 f"Evaluation report saved to {self.model_eval_config.REPORT_FILE_PATH}")
