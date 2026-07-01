@@ -17,18 +17,44 @@
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
-# ----------------------------------------  ----------------------------------------
 
-from shipment.pipline.training_pipeline import TrainPipeline
+from shipment.entity.config_entity import ModelPusherConfig
+from shipment.entity.artifacts_entity import ModelPusherArtifacts
 
 if __name__ == "__main__":
-    try:
-        print("Starting Training Pipeline (Ingestion + Validation + Transformation + Training + Evaluation)...")
-        pipeline = TrainPipeline()
-        pipeline.run_pipeline()
-        print("Training pipeline executed and model evaluated successfully!")
-    except Exception as e:
-        print(f"Pipeline execution failed: {e}")
+    print("Testing Model Pusher Config & Artifact Entities...")
+
+    # 1. Initialize configuration
+    pusher_config = ModelPusherConfig()
+    print(
+        f"Pusher Artifact Dir Path: {pusher_config.MODEL_PUSHER_ARTIFACTS_DIR}")
+    print(
+        f"Production Best Model Dir Path: {pusher_config.BEST_MODEL_DIR_PATH}")
+    print(
+        f"Production Best Model File Path: {pusher_config.BEST_MODEL_FILE_PATH}")
+
+    # 2. Initialize dummy artifact
+    pusher_artifact = ModelPusherArtifacts(
+        is_model_pushed=True,
+        saved_model_path=pusher_config.BEST_MODEL_FILE_PATH
+    )
+    print("\nDummy Artifact Details:")
+    print(f"Is Model Pushed: {pusher_artifact.is_model_pushed}")
+    print(f"Saved Model Path: {pusher_artifact.saved_model_path}")
+    print("All Model Pusher entities initialized successfully!")
+
+# ----------------------------------------  ----------------------------------------
+
+# from shipment.pipline.training_pipeline import TrainPipeline
+
+# if __name__ == "__main__":
+#     try:
+#         print("Starting Training Pipeline (Ingestion + Validation + Transformation + Training + Evaluation)...")
+#         pipeline = TrainPipeline()
+#         pipeline.run_pipeline()
+#         print("Training pipeline executed and model evaluated successfully!")
+#     except Exception as e:
+#         print(f"Pipeline execution failed: {e}")
 
 
 # ----------------------------------------  ----------------------------------------

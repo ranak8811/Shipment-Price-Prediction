@@ -42,3 +42,11 @@ class ModelEvaluationArtifacts:
     improved_score: float
     best_model_path: str
     trained_model_path: str
+
+# Model Pusher Artifacts
+
+
+@dataclass
+class ModelPusherArtifacts:
+    is_model_pushed: bool
+    saved_model_path: str

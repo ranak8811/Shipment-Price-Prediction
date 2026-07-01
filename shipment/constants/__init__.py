@@ -49,3 +49,6 @@ MODEL_EVALUATION_DIR_NAME = "ModelEvaluationArtifacts"
 MODEL_EVALUATION_REPORT_FILE_NAME = "model_evaluation_report.yaml"
 BEST_MODEL_DIR = "saved_models"
 BEST_MODEL_FILE_NAME = "shipping_price_model.pkl"
+
+# Model Pusher related constants
+MODEL_PUSHER_DIR_NAME = "ModelPusherArtifacts"
