@@ -31,3 +31,14 @@ class DataTransformationArtifacts:
 @dataclass
 class ModelTrainerArtifacts:
     trained_model_file_path: str
+
+
+# Model Evaluation Artifacts
+
+
+@dataclass
+class ModelEvaluationArtifacts:
+    is_model_accepted: bool
+    improved_score: float
+    best_model_path: str
+    trained_model_path: str

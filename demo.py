@@ -19,15 +19,41 @@
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
 # ----------------------------------------  ----------------------------------------
-# ----------------------------------------  ----------------------------------------
 
 from shipment.pipline.training_pipeline import TrainPipeline
+from shipment.entity.config_entity import ModelEvaluationConfig
+from shipment.entity.artifacts_entity import ModelEvaluationArtifacts
 
 if __name__ == "__main__":
-    print("Starting Complete Training Pipeline Run (Ingestion -> Validation -> Transformation -> Trainer)...")
-    pipeline = TrainPipeline()
-    pipeline.run_pipeline()
-    print("\nPipeline run completed successfully!")
+    print("Testing Model Evaluation Config & Artifact Entities...")
+
+    # 1. Initialize configuration
+    eval_config = ModelEvaluationConfig()
+    print(f"Report File Path: {eval_config.REPORT_FILE_PATH}")
+    print(f"Best Model File Path: {eval_config.BEST_MODEL_FILE_PATH}")
+    print(f"Trained Model File Path: {eval_config.TRAINED_MODEL_FILE_PATH}")
+
+    # 2. Initialize dummy artifact
+    eval_artifact = ModelEvaluationArtifacts(
+        is_model_accepted=True,
+        improved_score=0.035,
+        best_model_path=eval_config.BEST_MODEL_FILE_PATH,
+        trained_model_path=eval_config.TRAINED_MODEL_FILE_PATH
+    )
+    print("\nDummy Artifact Details:")
+    print(f"Is Model Accepted: {eval_artifact.is_model_accepted}")
+    print(f"Improved Score: {eval_artifact.improved_score}")
+    print("All entities initialized successfully!")
+
+# ----------------------------------------  ----------------------------------------
+
+# from shipment.pipline.training_pipeline import TrainPipeline
+
+# if __name__ == "__main__":
+#     print("Starting Complete Training Pipeline Run (Ingestion -> Validation -> Transformation -> Trainer)...")
+#     pipeline = TrainPipeline()
+#     pipeline.run_pipeline()
+#     print("\nPipeline run completed successfully!")
 
 # ----------------------------------------  ----------------------------------------
 

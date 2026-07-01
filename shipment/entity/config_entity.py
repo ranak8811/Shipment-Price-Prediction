@@ -104,3 +104,27 @@ class ModelTrainerConfig:
         self.TRAINED_MODEL_FILE_PATH: str = os.path.join(
             os.getcwd(), ARTIFACTS_DIR, MODEL_TRAINER_ARTIFACTS_DIR, MODEL_FILE_NAME
         )
+
+
+@dataclass
+class ModelEvaluationConfig:
+    def __init__(self):
+        self.UTILS = MainUtils()
+        self.DATA_TRANSFORMATION_ARTIFACTS_DIR: str = os.path.join(
+            os.getcwd(), ARTIFACTS_DIR, DATA_TRANSFORMATION_ARTIFCATS_DIR
+        )
+        self.MODEL_EVALUATION_ARTIFACTS_DIR: str = os.path.join(
+            os.getcwd(), ARTIFACTS_DIR, MODEL_EVALUATION_DIR_NAME
+        )
+        self.REPORT_FILE_PATH: str = os.path.join(
+            self.MODEL_EVALUATION_ARTIFACTS_DIR, MODEL_EVALUATION_REPORT_FILE_NAME
+        )
+        self.BEST_MODEL_DIR_PATH: str = os.path.join(
+            os.getcwd(), BEST_MODEL_DIR
+        )
+        self.BEST_MODEL_FILE_PATH: str = os.path.join(
+            self.BEST_MODEL_DIR_PATH, BEST_MODEL_FILE_NAME
+        )
+        self.TRAINED_MODEL_FILE_PATH: str = os.path.join(
+            os.getcwd(), ARTIFACTS_DIR, MODEL_TRAINER_ARTIFACTS_DIR, MODEL_FILE_NAME
+        )

@@ -43,3 +43,9 @@ PREPROCESSOR_OBJECT_FILE_NAME = "shipping_preprocessor.pkl"
 MODEL_TRAINER_ARTIFACTS_DIR = "ModelTrainerArtifacts"
 MODEL_FILE_NAME = "shipping_price_model.pkl"
 MODEL_SAVE_FORMAT = ".pkl"
+
+# Model Evaluation related constants
+MODEL_EVALUATION_DIR_NAME = "ModelEvaluationArtifacts"
+MODEL_EVALUATION_REPORT_FILE_NAME = "model_evaluation_report.yaml"
+BEST_MODEL_DIR = "saved_models"
+BEST_MODEL_FILE_NAME = "shipping_price_model.pkl"
